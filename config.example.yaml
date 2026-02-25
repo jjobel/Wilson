@@ -1,0 +1,28 @@
+# Wilson Configuration
+# Copy this to config.yaml and customize.
+
+fields:
+  - name: "Astrophysics / Cosmology"
+    arxiv_categories: ["astro-ph.CO", "astro-ph.GA", "astro-ph.HE", "astro-ph.SR"]
+    keywords: ["dark matter", "dark energy", "gravitational waves", "CMB", "cosmic microwave background"]
+  - name: "Quantum Physics / QFT"
+    arxiv_categories: ["quant-ph", "hep-th"]
+    keywords: ["quantum entanglement", "quantum field theory", "quantum computing", "topological"]
+
+schedule:
+  time: "08:00"           # Daily digest time (24h format)
+  timezone: "America/New_York"
+
+notifier:
+  backend: "console"      # Options: "console", "pushover", "telegram"
+  # For Pushover: set PUSHOVER_API_TOKEN and PUSHOVER_USER_KEY env vars
+  # For Telegram: set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars
+
+anthropic:
+  model: "claude-sonnet-4-6"
+  max_tokens: 4096
+  # Set ANTHROPIC_API_KEY env var
+
+textbooks:
+  directory: "./textbooks/"
+  vector_store: "./data/vectors/"

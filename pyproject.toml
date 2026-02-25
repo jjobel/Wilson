@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wilson"
+version = "0.1.0"
+description = "Wilson — A physics research assistant that monitors journals, summarizes findings, and delivers daily digests"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.40.0",
+    "arxiv>=2.1.0",
+    "httpx>=0.27.0",
+    "pyyaml>=6.0",
+    "apscheduler>=3.10.0",
+    "chromadb>=0.5.0",
+    "pymupdf>=1.24.0",
+    "sentence-transformers>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6.0",
+]
+pushover = [
+    "python-pushover2>=1.0",
+]
+telegram = [
+    "python-telegram-bot>=21.0",
+]
+
+[project.scripts]
+wilson = "wilson.cli:main"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
