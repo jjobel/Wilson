@@ -48,7 +48,7 @@ Wilson/
 
 - **Default branch**: `master`
 - **Feature branches**: Use descriptive branch names prefixed with your context (e.g., `claude/feature-name-sessionId`)
-- **Commit messages**: Write clear, concise commit messages that describe *why* the change was made, not just what changed
+- **Commit messages**: Write clear, concise commit messages that describe *why* the change was made, not just what changed. Do NOT append Claude Code session links to commit messages.
 - **Push**: Always use `git push -u origin <branch-name>`
 
 ### Code Style
