@@ -1,0 +1,24 @@
+{
+  "name": "Carlike GPS Navigation",
+  "short_name": "Carlike",
+  "description": "Free car GPS navigation for your phone dashboard",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0f0f1a",
+  "background_color": "#0f0f1a",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%230f0f1a'/%3E%3Cpath d='M256 80 L340 380 L256 320 L172 380 Z' fill='%234cc9f0'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='36' fill='%230f0f1a'/%3E%3Cpath d='M96 30 L128 142 L96 120 L64 142 Z' fill='%234cc9f0'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

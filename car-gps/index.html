@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0f0f1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Carlike — Free car GPS navigation for your phone dashboard">
+  <title>Carlike</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Full-screen map -->
+  <div id="map"></div>
+
+  <!-- Search overlay -->
+  <div id="search-panel" class="overlay-panel top-panel">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Where to?" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button id="search-clear" class="icon-btn" aria-label="Clear search" style="display:none;">&times;</button>
+    </div>
+    <ul id="search-results" class="search-results"></ul>
+  </div>
+
+  <!-- Direction banner (shown during navigation) -->
+  <div id="direction-banner" class="overlay-panel direction-banner" style="display:none;">
+    <div class="direction-icon" id="direction-icon"></div>
+    <div class="direction-info">
+      <div class="direction-instruction" id="direction-instruction"></div>
+      <div class="direction-distance" id="direction-distance"></div>
+    </div>
+  </div>
+
+  <!-- Route summary (shown after route calculated, before navigation starts) -->
+  <div id="route-summary" class="overlay-panel route-summary" style="display:none;">
+    <div class="route-summary-content">
+      <span id="route-duration" class="route-stat"></span>
+      <span class="route-sep">&middot;</span>
+      <span id="route-distance" class="route-stat"></span>
+    </div>
+    <button id="start-nav-btn" class="action-btn primary-btn">Start</button>
+    <button id="cancel-route-btn" class="action-btn cancel-btn">Cancel</button>
+  </div>
+
+  <!-- Turn list panel (expandable) -->
+  <div id="turn-list-panel" class="overlay-panel turn-list-panel" style="display:none;">
+    <div class="turn-list-header">
+      <span>Directions</span>
+      <button id="close-turns" class="icon-btn">&times;</button>
+    </div>
+    <ul id="turn-list" class="turn-list"></ul>
+  </div>
+
+  <!-- Bottom control bar -->
+  <div id="controls" class="overlay-panel bottom-panel">
+    <button id="btn-center" class="control-btn" aria-label="Center on my location" title="Center">
+      <svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="4" fill="var(--primary)"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button id="btn-turns" class="control-btn" aria-label="Show turn list" title="Directions" style="display:none;">
+      <svg viewBox="0 0 24 24" width="28" height="28"><path d="M4 6h16M4 12h10M4 18h14" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button id="btn-voice" class="control-btn" aria-label="Toggle voice" title="Voice">
+      <svg viewBox="0 0 24 24" width="28" height="28" id="voice-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="var(--primary)"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="var(--primary)" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="12" y1="19" x2="12" y2="23" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button id="btn-stop-nav" class="control-btn stop-btn" aria-label="Stop navigation" title="Stop" style="display:none;">
+      <svg viewBox="0 0 24 24" width="28" height="28"><rect x="6" y="6" width="12" height="12" rx="2" fill="#f72585"/></svg>
+    </button>
+  </div>
+
+  <!-- Arrived overlay -->
+  <div id="arrived-overlay" class="arrived-overlay" style="display:none;">
+    <div class="arrived-content">
+      <div class="arrived-icon">&#x1F3C1;</div>
+      <div class="arrived-text">You have arrived</div>
+      <button id="btn-dismiss-arrived" class="action-btn primary-btn">Done</button>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  <!-- App modules -->
+  <script src="js/map.js"></script>
+  <script src="js/gps.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Register service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
